@@ -19,6 +19,8 @@ interface ApodInteractor {
         fun showNetworkErrorDialog()
 
         fun showErrorDialog()
+
+        fun getAbsolutePath(): String?
     }
 
     interface Presenter {
@@ -27,7 +29,7 @@ interface ApodInteractor {
 
         suspend fun getPicOfTheDay()
 
-        fun isNetworkConnectionAvailable() : Boolean
+        fun isNetworkConnectionAvailable(): Boolean
 
         fun loadOfflineData()
     }

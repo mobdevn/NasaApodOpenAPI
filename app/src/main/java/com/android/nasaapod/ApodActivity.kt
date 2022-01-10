@@ -30,7 +30,7 @@ class ApodActivity : AppCompatActivity(), ApodInteractor.View {
         presenter = ApodPresenter(
             ApiClientRepository(),
             connectivityManager,
-            //getDiskCacheDir(this, DISK_CACHE_SUBDIR),
+            getPreferences(Context.MODE_PRIVATE),
             this
         )
         presenter.start()
@@ -54,6 +54,10 @@ class ApodActivity : AppCompatActivity(), ApodInteractor.View {
 
     override fun showProgressDialog() {
         progressDialog.visibility = View.VISIBLE
+    }
+
+    override fun getAbsolutePath(): String? {
+        return getExternalFilesDir(null)?.absolutePath
     }
 
     override fun showNetworkErrorDialog() {
